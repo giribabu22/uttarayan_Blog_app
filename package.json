@@ -1,0 +1,32 @@
+{
+  "name": "uttarayan",
+  "version": "1.0.0",
+  "description": "talking app ",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giribabu22/uttarayan.git"
+  },
+  "keywords": [
+    "chatting",
+    "app"
+  ],
+  "author": "own",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/giribabu22/uttarayan/issues"
+  },
+  "homepage": "https://github.com/giribabu22/uttarayan#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "hbs": "^4.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20",
+    "sequelize": "^6.25.3"
+  }
+}

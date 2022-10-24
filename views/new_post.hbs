@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>new_Post form</title>
+</head>
+<body>
+    <nav>
+    <ul id="menu">
+
+    <h1>new post form</h1>
+            <form action="" method="patch">
+                
+            </form>
+        <li class="logo"><a href="http://localhost:3000/home">Home</a></li>
+        <li class="item"><a href="http://localhost:3000/profile">Profile</a></li>
+        <li class="item"><a href="http://localhost:3000/home/new_post">re- fress</a></li>
+    </ul>
+    </nav>
+    <div class="bg">
+        <div class="box">
+        <form action="" method="post">
+                <input type="text" id="pin" name="title" placeholder="Post title" required>
+                <textarea id="review" type="text" name="message" placeholder="massage" rows="4" cols="40"></textarea>
+                <input type="text" id="url4" name="url" placeholder="copy and paste the image url" required>
+                <a href="http://localhost:3000/home">Back</a> <button onclick="cic()" type="submit">submit</button>   
+            </form>
+        </div>
+    </div>
+    <script>
+        function cic(){
+            const url_ = document.getElementById('url4').value;
+            if (url_.length > 150 && url_.slice(0,4) != 'http' ){
+                alert('your url is invallid')
+            }
+        }
+    </script>
+    <style>
+        *{
+            align-items: center;
+            width: auto;
+            margin:10px;
+        }
+        body{
+            background-color: rgba(156, 155, 155, 0.206);
+        }
+        h1{
+            font-family: monospace;
+            color: black;
+            font-weight: 600;
+            font-size: 35px;
+        }
+        .bg{
+             background: rgba(128, 128, 128, 0.76);
+            height: 64vh;
+            width: 44vh;
+            border-radius: 50%;
+            display: flex;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        textarea{
+            width: 70%;
+            border-radius: 10px;
+            padding: 10px 20px;
+            background-color: azure;
+        }
+        input{
+            width: 70%;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 20px;
+            background-color: azure;
+        }
+        button{
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: rgb(244, 183, 70);
+        }
+        a{
+            text-decoration: none;
+            height: 30px;
+            width: 80px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 20px;
+            background-color: rgb(244, 183, 70);
+            border: 1px solid;
+        }
+         #menu{
+            display: flexbox;
+            left: 0%;
+            width: 100%;
+            color: white;
+            text-align: left;
+        }
+        #menu a{
+            font-size: 1.3rem;
+            display: flexbox;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+    </style>
+</body>
+</html>
