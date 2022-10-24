@@ -18,9 +18,9 @@ routers.route('')
         }else{
 
             await posts.create(req.body).then((result) => {
-                res.redirect('https://uttarayan-app.herokuapp.com/home')       
+                res.redirect('/home')       
             }).catch((errors) => {
-                res.send(errors.message)
+                res.send("notification!!" + errors.message)
             });
         }
     })

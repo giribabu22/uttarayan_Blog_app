@@ -12,9 +12,9 @@
                 <input type="text" placeholder="Search" required>
                 <button type="submit">🔍</button>
             </form>
-        <li class="logo"><a href="https://uttarayan-app.herokuapp.com/login">login</a></li>
-        <li class="item"><a href="https://uttarayan-app.herokuapp.com/new_post">Newpost</a></li>
-        <li class="item"><a href="https://uttarayan-app.herokuapp.com/profile">Profile</a></li>
+        <li class="logo"><a href="/login">login</a></li>
+        <li class="item"><a href="/new_post">Newpost</a></li>
+        <li class="item"><a href="/profile">Profile</a></li>
     </ul>
 </nav>
 <table id = 'menu'>
@@ -27,7 +27,7 @@
             var popup = document.getElementById("myPopup");
             popup.classList.toggle("show");
         }
-        url = 'http://localhost:3000/home/info'
+        url = '/home/info'
         async function fetch_data(url){
             const eleRoot = document.getElementById('root');
             const res = await fetch(url,{
@@ -60,18 +60,18 @@
                 }
 
                 var link = document.createElement('a');
-                link.setAttribute('href', `http://localhost:3000/home/likes/:${element.id}/:${element.email}/:likes`);
+                link.setAttribute('href', `/home/likes/:${element.id}/:${element.email}/:likes`);
                 link.textContent = `like ${element.likes}`;
                 post.appendChild(link);
 
                 
                 var link = document.createElement('a');
-                link.setAttribute('href', `http://localhost:3000/home/dislike/:${element.id}/:${element.email}/:dislike`);
+                link.setAttribute('href', `/home/dislike/:${element.id}/:${element.email}/:dislike`);
                 link.textContent = `dislike ${element.dislike}`;
                 post.appendChild(link);
 
                 var link = document.createElement('a');
-                link.setAttribute('href', `http://localhost:3000/comments/:${element.id}/data`);
+                link.setAttribute('href', `/comments/:${element.id}/data`);
                 link.textContent = 'comments';
                 post.appendChild(link);
                 post.appendChild(eleH6);

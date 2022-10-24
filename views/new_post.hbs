@@ -11,21 +11,23 @@
     <ul id="menu">
 
     <h1>new post form</h1>
-            <form action="" method="patch">
-                
-            </form>
-        <li class="logo"><a href="https://uttarayan-app.herokuapp.com/home">Home</a></li>
-        <li class="item"><a href="https://uttarayan-app.herokuapp.com/profile">Profile</a></li>
-        <li class="item"><a href="https://uttarayan-app.herokuapp.com/home/new_post">re- fress</a></li>
+        <li class="logo"><a href="/home">Home</a></li>
+        <li class="item"><a href="/profile">Profile</a></li>
+        <li class="item"><a href="/home/new_post">re- fress</a></li>
     </ul>
     </nav>
     <div class="bg">
         <div class="box">
         <form action="" method="post">
+            <h1>`
+            </h1>
                 <input type="text" id="pin" name="title" placeholder="Post title" required>
                 <textarea id="review" type="text" name="message" placeholder="massage" rows="4" cols="40"></textarea>
                 <input type="text" id="url4" name="url" placeholder="copy and paste the image url" required>
-                <a href="https://uttarayan-app.herokuapp.com/home">Back</a> <button onclick="cic()" type="submit">submit</button>   
+                <a href="/home">Back</a> <button onclick="cic()" type="submit">submit</button>   
+                
+                <a href="https://postimages.org/" target="_blank" >own img</a>
+                <h6><input type="checkbox" required>if you want to upload the your own image click the "OWN IMG" Button and follow the steps.</h6>
             </form>
         </div>
     </div>
@@ -40,11 +42,11 @@
     <style>
         *{
             align-items: center;
-            width: auto;
-            margin:10px;
+            text-decoration: none;
         }
         body{
             background-color: rgba(156, 155, 155, 0.206);
+            width: 90%;
         }
         h1{
             font-family: monospace;
@@ -59,49 +61,73 @@
             border-radius: 50%;
             display: flex;
             margin: 0 auto;
-            padding: 15px;
-        }
-        textarea{
-            width: 70%;
-            border-radius: 10px;
-            padding: 10px 20px;
-            background-color: azure;
-        }
-        input{
-            width: 70%;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 20px;
-            background-color: azure;
-        }
-        button{
-            border-radius: 20px;
-            padding: 10px 20px;
-            font-size: 18px;
-            background-color: rgb(244, 183, 70);
-        }
-        a{
-            text-decoration: none;
-            height: 30px;
-            width: 80px;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 20px;
-            background-color: rgb(244, 183, 70);
-            border: 1px solid;
+            padding: 25px;
         }
          #menu{
-            display: flexbox;
             left: 0%;
             width: 100%;
             color: white;
             text-align: left;
+            margin: 10px 0;
+         }
+         #menu li{
+            margin-top: 30px;
+         }
+        textarea {
+            width: 90%;
+            border: none;
+            background: #E8E8E8;
+            padding: 5px 10px;
+            height: 50%;
+            border-radius: 5px 5px 0px 0px;
+            border-bottom: 2px solid #016BA8;
+            transition: all 0.5s;
+            margin-top: 15px;
         }
-        #menu a{
-            font-size: 1.3rem;
-            display: flexbox;
-            margin: 0 auto;
-            overflow: hidden;
+        a{
+            background: #016ba8;
+            color: #fff;
+            padding: 10px 10px;
+            border: none;
+            margin-top: 0px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.25);
+            transition: 1s all;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        input {
+            width: 90%;
+            border: none;
+            background: #E8E8E8;
+            padding: 5px 10px;
+            height: 2rem;
+            border-radius: 5px 5px 0px 0px;
+            border-bottom: 2px solid #016BA8;
+            transition: all 0.5s;
+            margin-top: 15px;            
+            margin: 0 0 10px;
+        }
+        button {
+            background: #016ba8;
+            color: #fff;
+            padding: 10px 10px;
+            border: none;
+            margin-top: 0px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.25);
+            transition: 1s all;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        h6{
+            color: red;
+            font-size: 14px;
+            display: flex;
         }
     </style>
 </body>

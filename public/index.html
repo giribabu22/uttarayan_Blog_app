@@ -15,9 +15,9 @@
                 <input type="text" placeholder="Search" required>
                 <button type="submit">🔍</button>
             </form>
-            <li class="item"><a href="https://uttarayan-app.herokuapp.com/home/new_post">Newpost</a></li>
-            <li class="item"><a href="https://uttarayan-app.herokuapp.com/profile">Profile</a></li>
-            <li class="logo"><a  href="https://uttarayan-app.herokuapp.com/login">about</a></li>
+            <li class="item"><a href="/home/new_post">Newpost</a></li>
+            <li class="item"><a href="/profile">Profile</a></li>
+            <li class="logo"><a  href="/login">about</a></li>
     </ul>
 </nav>
 <table id = 'menu'>
@@ -30,7 +30,7 @@
             var popup = document.getElementById("myPopup");
             popup.classList.toggle("show");
          }
-        url = 'https://uttarayan-app.herokuapp.com/home/info'
+        url = 'http://localhost:3000/home/info'
         async function fetch_data(url){
             const eleRoot = document.getElementById('root');
             const res = await fetch(url,{
@@ -63,18 +63,18 @@
                 }
                 }
                 var link = document.createElement('a');
-                link.setAttribute('href', `https://uttarayan-app.herokuapp.com/feedback/:${element.id}/:likes`);
+                link.setAttribute('href', `/feedback/:${element.id}/:likes`);
                 link.textContent = `like ${element.likes}`;
                 post.appendChild(link);
 
                 
                 var link = document.createElement('a');
-                link.setAttribute('href', `https://uttarayan-app.herokuapp.com/feedback/:${element.id}/:dislike`);
+                link.setAttribute('href', `/feedback/:${element.id}/:dislike`);
                 link.textContent = `dislike ${element.dislikes}`;
                 post.appendChild(link);
 
                 var link = document.createElement('a');
-                link.setAttribute('href', `https://uttarayan-app.herokuapp.com/comments/:${element.id}/data`);
+                link.setAttribute('href', `/comments/:${element.id}/data`);
                 link.textContent = 'comments';
                 post.appendChild(link);
                 post.appendChild(eleH6);
@@ -140,24 +140,15 @@
         }
         a{
             text-decoration: none;
-            height: 20px;
-            width: 80px;
+            height: 5%;
+            width: 10%;
             padding: 5px 20px;
             border-radius: 10px;
-            font-size: 20px;
+            font-size: 100%;
             background-color: #016ba8;
             color: #fff;
             border: 1px solid;
             margin-left: 1rem;
-        }
-        .post a{
-            border: none;
-            background: #016ba8;
-            color: #fff;
-            font-size: 120%;
-            display: flex;
-            margin: 10px auto;
-            overflow: hidden;
         }
 
         img{

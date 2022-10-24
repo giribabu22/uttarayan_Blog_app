@@ -18,8 +18,9 @@ routers.route('/info').get(async (req, res) => {
         res.send(dic)
 
     } catch (errors) {
-        res.send(errors.message)
+        res.send("notification !! __"+errors.message)
     }
 })
+
 
 module.exports = routers

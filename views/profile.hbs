@@ -13,9 +13,9 @@
                 <input type="text" placeholder="Search" required>
                 <button type="submit">🔍</button>
             </form>
-        <li class="logo"><a href="https://uttarayan-app.herokuapp.com/home">Home</a></li>
-        <li class="item"><a href="https://uttarayan-app.herokuapp.com/home/new_post">Newpost</a></li>
-        <li class="item"><a href="https://uttarayan-app.herokuapp.com/logout">logout</a></li>
+        <li class="logo"><a href="/home">Home</a></li>
+        <li class="item"><a href="/home/new_post">Newpost</a></li>
+        <li class="item"><a href="/logout">logout</a></li>
     </ul>
 </nav>
     <table id = 'menu'>
@@ -25,10 +25,8 @@
     </div>
     <div class="bottom"> <hr> </div>
     <script >
-        url = 'http://localhost:3000/profile/info'
+        url = '/profile/info'
 
-
-            
         async function fetch_data(url){
             const eleRoot = document.getElementById('root');
             const res = await fetch(url,{
@@ -61,24 +59,24 @@
                 }
 
                 var link = document.createElement('a');
-                link.setAttribute('href', `http://localhost:3000/home/likes/:${element.id}/:${element.email}/:likes`);
+                link.setAttribute('href', `/feedback/:${element.id}/:likes`);
                 link.textContent = `like ${element.likes}`;
                 post.appendChild(link);
 
                 
                 var link = document.createElement('a');
-                link.setAttribute('href', `http://localhost:3000/home/dislike/:${element.id}/:${element.email}/:dislike`);
+                link.setAttribute('href', `/feedback/:${element.id}/:dislike`);
                 link.textContent = `dislike ${element.dislike}`;
                 post.appendChild(link);
                 
                 var link = document.createElement('a');
-                link.setAttribute('href', `http://localhost:3000/comments/:${element.id}/:${element.email}`);
+                link.setAttribute('href', `/comments/:${element.id}/:${element.email}`);
                 link.textContent = 'comments';
                 post.appendChild(link);
                 post.appendChild(eleH6);
                 
                  var link = document.createElement('a');
-                link.setAttribute('href', `http://localhost:3000/home/delete/:${element.id}`);
+                link.setAttribute('href', `/home/delete/:${element.id}`);
                 link.textContent = 'delete';
                 post.appendChild(link);
                 post.appendChild(eleH6);

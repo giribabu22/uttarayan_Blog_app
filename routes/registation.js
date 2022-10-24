@@ -13,15 +13,15 @@ routers.route('')
         req.body['password'] = await creating_token(req.body.password)
         await register.create(req.body).then((bool) => {
             if (bool) {
-                res.redirect('https://uttarayan-app.herokuapp.com/login')
+                res.redirect('/login')
             } else {
                 res.send('no not yet!!')
             }
         }).catch((errors) => {
             if (errors.message == 'Validation error') {
-                res.send("you have account with this email!!  <a href='https://uttarayan-app.herokuapp.com/login'>login</a> <style> *{margin:10%; font-size:100px;}")
+                res.send("notification!! you have account with this email!!  <a href='/login'>login</a> <style> *{margin:10%; font-size:100px;}")
             } else {
-                res.send('error :' + errors.message +"<a href='https://uttarayan-app.herokuapp.com/login'>login</a> <style> *{margin:10%; font-size:100px;}")
+                res.send('notification !! error :' + errors.message +"<a href='/login'>login</a> <style> *{margin:10%; font-size:100px;}")
             }
         });
     })
