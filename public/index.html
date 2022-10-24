@@ -15,9 +15,9 @@
                 <input type="text" placeholder="Search" required>
                 <button type="submit">🔍</button>
             </form>
-            <li class="item"><a href="http://localhost:3000/home/new_post">Newpost</a></li>
-            <li class="item"><a href="http://localhost:3000/profile">Profile</a></li>
-            <li class="logo"><a  href="http://localhost:3000/login">about</a></li>
+            <li class="item"><a href="https://uttarayan-app.herokuapp.com/home/new_post">Newpost</a></li>
+            <li class="item"><a href="https://uttarayan-app.herokuapp.com/profile">Profile</a></li>
+            <li class="logo"><a  href="https://uttarayan-app.herokuapp.com/login">about</a></li>
     </ul>
 </nav>
 <table id = 'menu'>
@@ -30,7 +30,7 @@
             var popup = document.getElementById("myPopup");
             popup.classList.toggle("show");
          }
-        url = 'http://localhost:3000/home/info'
+        url = 'https://uttarayan-app.herokuapp.com/home/info'
         async function fetch_data(url){
             const eleRoot = document.getElementById('root');
             const res = await fetch(url,{
@@ -63,18 +63,18 @@
                 }
                 }
                 var link = document.createElement('a');
-                link.setAttribute('href', `http://localhost:3000/feedback/:${element.id}/:likes`);
+                link.setAttribute('href', `https://uttarayan-app.herokuapp.com/feedback/:${element.id}/:likes`);
                 link.textContent = `like ${element.likes}`;
                 post.appendChild(link);
 
                 
                 var link = document.createElement('a');
-                link.setAttribute('href', `http://localhost:3000/feedback/:${element.id}/:dislike`);
+                link.setAttribute('href', `https://uttarayan-app.herokuapp.com/feedback/:${element.id}/:dislike`);
                 link.textContent = `dislike ${element.dislikes}`;
                 post.appendChild(link);
 
                 var link = document.createElement('a');
-                link.setAttribute('href', `http://localhost:3000/comments/:${element.id}/data`);
+                link.setAttribute('href', `https://uttarayan-app.herokuapp.com/comments/:${element.id}/data`);
                 link.textContent = 'comments';
                 post.appendChild(link);
                 post.appendChild(eleH6);

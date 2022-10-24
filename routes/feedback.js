@@ -45,7 +45,7 @@ rote.route('/:id_post/:feel').get(async (req, res) => {
                 // await feedbacks.destroy({ where: { postId: postId, registerId: registerId, feeling: "likes" } })
             }
         }
-        res.redirect('http://localhost:3000/home/')
+        res.redirect('https://uttarayan-app.herokuapp.com/home/')
     } catch (errors) {
     }
 })

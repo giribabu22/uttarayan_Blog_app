@@ -18,7 +18,7 @@ routers.route('')
         }else{
 
             await posts.create(req.body).then((result) => {
-                res.redirect('http://localhost:3000/home')       
+                res.redirect('https://uttarayan-app.herokuapp.com/home')       
             }).catch((errors) => {
                 res.send(errors.message)
             });

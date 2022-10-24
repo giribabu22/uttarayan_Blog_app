@@ -10,9 +10,9 @@
     <nav>
     <ul id="menu">
     <h1>comments form</h1>
-        <li class="logo"><a href="http://localhost:3000/home">Home</a></li>
-        <li class="item"><a href="http://localhost:3000/home/new_post">Newpost</a></li>
-        <li class="item"><a href="http://localhost:3000/profile">Profile</a></li>
+        <li class="logo"><a href="https://uttarayan-app.herokuapp.com/home">Home</a></li>
+        <li class="item"><a href="https://uttarayan-app.herokuapp.com/home/new_post">Newpost</a></li>
+        <li class="item"><a href="https://uttarayan-app.herokuapp.com/profile">Profile</a></li>
     </ul>
     </nav>
     <div class="bg">
@@ -22,12 +22,12 @@
             </div>
         <form action="" method="post">
             <textarea  type="text" name="massage" required placeholder="massage" rows="4" cols="36"></textarea>
-            <button type="submit">submit</button>  <a href="http://localhost:3000/home">Back</a>
+            <button type="submit">submit</button>  <a href="https://uttarayan-app.herokuapp.com/home">Back</a>
         </form>
         </div>
     </div>
     <script>
-        url = 'http://localhost:3000/home/info'
+        url = 'https://uttarayan-app.herokuapp.com/home/info'
 
         async function fetch_data(url){
             const eleRoot = document.getElementById('total');
@@ -59,7 +59,7 @@
                     elep.textContent = `${element.feeling_msg}`
 
                     var link = document.createElement('a');
-                    link.setAttribute('href', `http://localhost:3000/del/:${element.id}`);
+                    link.setAttribute('href', `https://uttarayan-app.herokuapp.com/del/:${element.id}`);
                     link.textContent = `del`;
                     comit.appendChild(link);
                     }

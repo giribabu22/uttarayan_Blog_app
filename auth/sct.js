@@ -11,7 +11,7 @@ async function verification(req, res, next) {
         req["user"] = user;
         next()
     } else {
-        res.send("mag login first <a href='http://localhost:3000/login'>login</a> <style> *{margin:10%; font-size:80px;}")
+        res.send("notification! login first <a href='http://localhost:3000/login'>login</a> <style> *{margin:10%; font-size:80px;}")
     }
 }
 module.exports = { creating_token, verification }

@@ -22,9 +22,9 @@ routers
         if (old_data != null && old_data.hasOwnProperty("dataValues")) {
             let toke = await creating_token(old_data["dataValues"])
             res.cookie('user', toke)
-            res.redirect('http://localhost:3000/home')
+            res.redirect('https://uttarayan-app.herokuapp.com/home')
         } else {
-            res.send("invalid-input!! <a href='http://localhost:3000/login'>login</a> <style> *{margin:10%; font-size:80px;}")
+            res.send("invalid-input!! <a href='https://uttarayan-app.herokuapp.com/login'>login</a> <style> *{margin:10%; font-size:80px;}")
         }
     })
 
