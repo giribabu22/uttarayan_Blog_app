@@ -12,9 +12,8 @@ register.hasMany(feedbacks)
 register.hasMany(comments)
 
 db.sync().then((result) => {
-    console.log("let's go!!");
 }).catch((errors) => {
-    console.log(errors.message);
+    resizeBy.send(errors.message)
 });
 
 module.exports = {comments,register,posts,feedbacks}
