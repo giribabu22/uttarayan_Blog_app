@@ -14,7 +14,7 @@ app.use('/sign-up', require('./routes/registation'))
 app.use('/login', require('./routes/login'))
 app.use('/home/new_post', verification, require('./routes/new_post'))
 app.use('/feedback', verification, require('./routes/feedback'))
-app.use('/profile', verification, require('./routes/home'))
+app.use('/profile', verification, require('./routes/profile'))
 app.use('/home', verification, require('./routes/home'))
 
 app.use('/', require('./routes/registation'))

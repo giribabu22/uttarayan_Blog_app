@@ -25,8 +25,8 @@
     </div>
     <div class="bottom"> <hr> </div>
     <script >
-        url = '/profile/info'
-
+        url = 'https://uttarayan-app.herokuapp.com/profile/info'
+        
         async function fetch_data(url){
             const eleRoot = document.getElementById('root');
             const res = await fetch(url,{
@@ -43,16 +43,15 @@
 
                 const eleH3 = document.createElement("h3");
                 post.appendChild(eleH3);
-                eleH3.textContent = `${element.email} Post Id: ${element.id}`
+                eleH3.textContent = `${element.email}`
 
                 const elep = document.createElement("h1");
                 post.appendChild(elep);
-                elep.textContent = `${element.massage}`
+                elep.textContent = `${element.message}`
 
                 const eleH6 = document.createElement("h6");
-                eleH6.textContent = `${element.date}`
+                eleH6.textContent = `${element.createdAt}`
                 if (element.url != null){
-
                     const eleImg = document.createElement("img");
                     post.appendChild(eleImg);
                     eleImg.src = `${element.url}`
@@ -66,7 +65,7 @@
                 
                 var link = document.createElement('a');
                 link.setAttribute('href', `/feedback/:${element.id}/:dislike`);
-                link.textContent = `dislike ${element.dislike}`;
+                link.textContent = `dislike ${element.dislikes}`;
                 post.appendChild(link);
                 
                 var link = document.createElement('a');
@@ -76,7 +75,7 @@
                 post.appendChild(eleH6);
                 
                  var link = document.createElement('a');
-                link.setAttribute('href', `/home/delete/:${element.id}`);
+                link.setAttribute('href', `/delete/:${element.id}`);
                 link.textContent = 'delete';
                 post.appendChild(link);
                 post.appendChild(eleH6);
@@ -84,12 +83,11 @@
            }
         fetch_data(url)
 
-
     </script>
-   <style>
+    <style>
         *{
             align-items: center;
-            margin: 1% auto;
+            margin: 2% auto;
         }
 
         body{
@@ -114,9 +112,9 @@
             background-color: rgba(244, 183, 70, 0);
         }
         .post{
+            box-shadow: 0px 4px 24px 3px rgba(0, 0, 0, 0.476);
             position: relative;
             margin-top: 3rem !important;
-            background: rgb(128, 128, 128);
             padding: 20px;
             border-radius: 30px;
             width: 70%;
@@ -133,21 +131,15 @@
         }
         a{
             text-decoration: none;
-            height: 20px;
-            width: 80px;
-            padding: 5px 20px;
+            height: 5%;
+            width: 10%;
+            padding: 5px 10px;
             border-radius: 10px;
-            font-size: 20px;
-            background-color: rgb(243, 142, 27);
+            font-size: 90%;
+            background-color: #016ba8;
+            color: #fff;
             border: 1px solid;
             margin-left: 1rem;
-        }
-        .post a{
-            background-color: black;
-            font-size: 120%;
-            display: flex;
-            margin: 0 auto;
-            overflow: hidden;
         }
 
         img{
@@ -185,9 +177,6 @@
             text-align: center;
             }
 
-        @media(min-width: 1118px) {
-            margin-top: ;
-        }
     </style>
 </body>
 </html>
