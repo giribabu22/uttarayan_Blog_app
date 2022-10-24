@@ -16,6 +16,12 @@ app.use('/home/new_post', verification, require('./routes/new_post'))
 app.use('/feedback', verification, require('./routes/feedback'))
 app.use('/profile', verification, require('./routes/profile'))
 app.use('/home', verification, require('./routes/home'))
+app.use('/comments', verification, require('./routes/comments'))
+app.use('/delete', verification, require('./routes/delete'))
 
 app.use('/', require('./routes/registation'))
+app.get('/logout',(req,res)=>{
+    res.cookie.user = undefined
+    res.redirect('/login')
+})
 app.listen(port);

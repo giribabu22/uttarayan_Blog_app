@@ -17,61 +17,85 @@
     </nav>
     <div class="bg">
         <div class="box">
-            <div id="total">
-
+                <div id="myDIV">
+                    <div id="total"></div>
+                </div>
             </div>
+
+        </div>
+        <div class="box2">
         <form action="" method="post">
-            <textarea  type="text" name="massage" required placeholder="massage" rows="4" cols="36"></textarea>
+            <textarea  type="text" name="commit" required placeholder="massage" rows="4" cols="36"></textarea>
             <button type="submit">submit</button>  <a href="/home">Back</a>
         </form>
         </div>
     </div>
     <script>
-        url = '/home/info'
+        url = 'https://uttarayan-app.herokuapp.com/home/info'
 
         async function fetch_data(url){
+            
             const eleRoot = document.getElementById('total');
             const res = await fetch(url,{
                 method: 'GET'
             })
-            var {totaldata,post_comments} = await res.json();
-            let data = post_comments
+            var {totaldata,comments} = await res.json();
             let curUrl = window.location.href
-            var user_id2 = curUrl.slice(curUrl.length -6,curUrl.length -5)
-
-            data.forEach(element => {
-                if (user_id2 == element.post_id){
-
+            var user_id2 = curUrl.slice(curUrl.length -1,curUrl.length)
+            comments = comments.reverse()
+            comments.forEach(element => {
+                if (user_id2 == element.id){
                     const comit = document.createElement("div");
                     comit.classList.add('comit');
                     eleRoot.appendChild(comit);
-
+                   
                     var eleH3 = document.createElement("h3");
                     comit.appendChild(eleH3);
-                    eleH3.textContent = `${element.user_email}`
+                    eleH3.textContent = `${element.postId}`
 
                     var eleH3 = document.createElement("h5");
                     comit.appendChild(eleH3);
-                    eleH3.textContent = `${element.date}`
+                    eleH3.textContent = `${element.createdAt}`
 
                     const elep = document.createElement("h4");
                     comit.appendChild(elep);
-                    elep.textContent = `${element.feeling_msg}`
+                    elep.textContent = `${element.commit}`
 
                     var link = document.createElement('a');
-                    link.setAttribute('href', `/del/:${element.id}`);
+                    link.setAttribute('href', `/delete/:${element.id}/del`);
                     link.textContent = `del`;
                     comit.appendChild(link);
                     }
                 })}   
             fetch_data(url)
     </script>
+    <script>
+    const element = document.getElementById("total");
+    let y = element.scrollHeight;
+    let x = element.scrollWidth;
+    </script>
     <style>
+        #myDIV {
+            margin-top: 1vh;
+            height: 400px;
+            width: 500px;
+            overflow: auto;
+            }
+
+        #total {
+            height: 400px;
+            width: 80%;
+            padding: 10px;
+        }
+        .box2{
+            margin: 0 20%;
+            width: 400px;
+        }
         *{
             align-items: center;
             width: auto;
             margin: 20px 0;
-
+            font-size: 20px;
         }
         body{
             background-color: rgba(156, 155, 155, 0.206);
@@ -93,7 +117,8 @@
         }
         h4{
             background: rgba(156, 155, 155, 0.206);
-            padding: 10px;
+            padding: 2px;
+            font-size: 40px;
         }
         h5{
             text-align: right;
@@ -106,13 +131,13 @@
         }
 
         .comit{
-            position: relative;
+            z-index: 100;
+            position:inherit;
             max-width: 640px;
-            margin: 30px auto;
+            margin: 20px auto;
             background: #fff;
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 20px;
-            display: flexbox;
         }
         textarea {
             width: 100%;
@@ -125,6 +150,7 @@
             transition: all 0.5s;
             margin-top: 15px;
         }
+
         button {
             background: #016ba8;
             color: #fff;
@@ -140,6 +166,7 @@
             border-radius: 5px;
         }
         a {
+            z-index: 10;
             text-decoration: none;
             background: #016ba8;
             color: #fff;
@@ -151,9 +178,11 @@
             letter-spacing: 4px;
             box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.25);
             transition: 1s all;
-            font-size: 16px;
+            font-size: 26px;
             border-radius: 5px;
         }
+        
+        
     </style>
 </body>
 </html>

@@ -8,9 +8,6 @@
 </head>
 <body>
     <nav>
-    <!-- <ul id="menu"> <div class="popup" onclick="myFunction()">Click me to toggle the popup!
-        <span class="popuptext" id="myPopup">A Simple Popup! helllo </span>
-      </div> -->
             <form action="" method="patch">
                 <input type="text" placeholder="Search" required>
                 <button type="submit">🔍</button>
@@ -26,11 +23,15 @@
     </div>
     <div class="bottom"> <hr> </div>
     <script >
+        
+        const element = document.getElementsByTagName('h1');
+        let y = element.scrollHeight;
+        let x = element.scrollWidth;
         function myFunction() {
             var popup = document.getElementById("myPopup");
             popup.classList.toggle("show");
          }
-        url = 'https://uttarayan-app.herokuapp.com/home/info'
+        url = 'https://uttarayan-app.herokuapp.com/home/info' 
         async function fetch_data(url){
             const eleRoot = document.getElementById('root');
             const res = await fetch(url,{
@@ -74,7 +75,7 @@
                 post.appendChild(link);
 
                 var link = document.createElement('a');
-                link.setAttribute('href', `/comments/:${element.id}/data`);
+                link.setAttribute('href', `/comments/:${element.id}`);
                 link.textContent = 'comments';
                 post.appendChild(link);
                 post.appendChild(eleH6);
@@ -87,17 +88,21 @@
             align-items: center;
             margin: 2% auto;
         }
-
         body{
             background-color: rgba(156, 155, 155, 0.206);
         }
         h1{
-            font-family: monospace;
-            font-weight: 600;
-            font-size: 25px;
+            background-color: #016ba891;
+            color: #fff;
+            padding: 10px;
+            width: 90%;
+            height: 40px;
+            font-weight: 300;
+            overflow: auto;
+            font-size: 22px;
+            border-radius: 20px;
         }
         input{
-            padding: 10px 20px;
             border-radius: 10px;
             font-size: 20px;
             background-color: azure;
@@ -130,14 +135,24 @@
         a{
             text-decoration: none;
             height: 5%;
-            width: 10%;
-            padding: 5px 20px;
+            padding: 5px;
             border-radius: 10px;
-            font-size: 100%;
+            font-size: 25px;
             background-color: #016ba8;
             color: #fff;
             border: 1px solid;
-            margin-left: 1rem;
+            margin-left: 4px;
+        }
+        .post a{
+                text-decoration: none;
+                height: 5%;
+                padding: 5px;
+                border-radius: 10px;
+                font-size: 15px;
+                background-color: #016ba8;
+                color: #fff;
+                border: 1px solid;
+                margin-left: 4px;
         }
 
         img{
@@ -158,7 +173,7 @@
             text-align: left;
         }
         #menu a{
-            font-size: 1.3rem;
+            font-size: 1rem;
             display: flexbox;
             margin: 0 auto;
             overflow: hidden;

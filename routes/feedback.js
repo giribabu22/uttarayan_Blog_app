@@ -34,6 +34,12 @@ rote.route('/:id_post/:feel').get(async (req, res) => {
                     by: 1,
                     where: { id: id_post.slice(1) }
                 })
+            } else if (back_data['dataValues'].feeling == 'dislike' && feeling2 == 'likes' || back_data['dataValues'].feeling == 'dislike' && feeling2 == 'dislike') {
+                let r = await feedbacks.destroy({ where: { postId: postId, registerId: registerId } })
+                let r2 = await posts.decrement('dislikes', {
+                    by: 1,
+                    where: { id: id_post.slice(1) }
+                })
             }
             else if ((back_data['dataValues'].feeling == 'dislike' && feeling2 == 'dislike' )||( back_data['dataValues'].feeling == 'dislike' && feeling2 == 'likes')) {
                 await feedbacks.update({ feeling: 'likes' }, {
@@ -61,9 +67,9 @@ rote.route('/:id_post/:feel').get(async (req, res) => {
                     by: 1,
                     where: { id: id_post.slice(1) }
                 })
-            }else{
             }
         }
+        res.redirect(req.get('referer'));
     } catch (errors) {
     }
 })
