@@ -11,9 +11,9 @@
     <ul id="menu">
 
     <h1>new post form</h1>
-        <li class="logo"><a href="/home">Home</a></li>
-        <li class="item"><a href="/profile">Profile</a></li>
-        <li class="item"><a href="/home/new_post">re- fress</a></li>
+        <lu class="logo"><a href="/home">Home</a></lu>
+        <lu class="item"><a href="/profile">Profile</a></lu>
+        <lu class="item"><a href="/home/new_post">re- fress</a></lu>
     </ul>
     </nav>
     <div class="bg">
@@ -33,7 +33,8 @@
     <script>
         function cic(){
             const url_ = document.getElementById('url4').value;
-            if (url_.length > 150 && url_.slice(0,4) != 'http' ){
+            if (url_.length > 150 || url_.slice(0,4) != 'http' ){
+                console.log('running!!!')
                 alert('your url is invallid')
             }
         }

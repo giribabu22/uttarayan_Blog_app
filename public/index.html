@@ -12,9 +12,9 @@
                 <input type="text" placeholder="Search" required>
                 <button type="submit">🔍</button>
             </form>
-            <li class="item"><a href="/home/new_post">Newpost</a></li>
-            <li class="item"><a href="/profile">Profile</a></li>
-            <li class="logo"><a  href="/about">about</a></li>
+            <lu class="item"><a href="/home/new_post">Newpost</a></lu>
+            <lu class="item"><a href="/profile">Profile</a></lu>
+            <lu class="logo"><a  href="/about">about</a></lu>
     </ul>
 </nav>
 <table id = 'menu'>
@@ -31,7 +31,7 @@
             var popup = document.getElementById("myPopup");
             popup.classList.toggle("show");
          }  
-        url = 'https://uttarayan-app.herokuapp.com/home/info' 
+        url = '/home/info' 
         async function fetch_data(url){
             const eleRoot = document.getElementById('root');
             const res = await fetch(url,{
@@ -62,13 +62,19 @@
                     elep.textContent = `${element.message}`
                 }
 
-                const eleH6 = document.createElement("h6");
-                eleH6.textContent = `${element.createdAt}`;
                 if (element.url.length >10){
                     if (element.url != null){
-                    const eleImg = document.createElement("img");
-                    post.appendChild(eleImg);
-                    eleImg.src = `${element.url}`
+                        const eleH6 = document.createElement("h6");
+                        var link = document.createElement('a');
+                        
+                        eleH6.textContent = `${element.createdAt}`;
+                        link.setAttribute('href', `/comments/:${element.id}`);
+                        const eleImg = document.createElement("img");
+                        eleImg.src = `${element.url}`
+                        
+                        link.appendChild(eleImg);
+                        post.appendChild(link);
+                        post.appendChild(eleH6);
                 }
                 }
                 var link = document.createElement('a');
@@ -86,7 +92,6 @@
                 link.setAttribute('href', `/comments/:${element.id}`);
                 link.textContent = `Comments`;
                 post.appendChild(link);
-                post.appendChild(eleH6);
             });
         }
         fetch_data(url)
@@ -128,7 +133,7 @@
             margin-top: 3rem !important;
             padding: 10px;
             border-radius: 30px;
-            width: 70%;
+            width: 32vh;
             height: auto;
             margin: 0 auto;
             display: flexbox;
@@ -139,6 +144,23 @@
             padding:  8px 15px 15px 15px;
             background-color: azure;
             border-radius: 20px;
+        }
+        .post a{
+            text-decoration: none;
+            height: 5%;
+            padding: 5px;
+            border-radius: 10px;
+            font-size: 15px;
+            background-color: #016ba8;
+            color: #fff;
+            border: 1px solid;
+            margin-left: 4px;
+        }
+        #menu a{
+            font-size: 1rem;
+            display: flexbox;
+            margin: 0 auto;
+            overflow: hidden;
         }
         a{
             text-decoration: none;
@@ -151,26 +173,16 @@
             border: 1px solid;
             margin-left: 4px;
         }
-        .post a{
-                text-decoration: none;
-                height: 5%;
-                padding: 5px;
-                border-radius: 10px;
-                font-size: 15px;
-                background-color: #016ba8;
-                color: #fff;
-                border: 1px solid;
-                margin-left: 4px;
-        }
-
+        
         img{
             display: flex;
             margin: 0 auto;
-            width: 100%;
+            width: 32vh;
             height: auto;
-            overflow: hidden;
+            object-fit: scale-down;
             border-radius: 20px;
             margin-bottom: 1.5rem;
+             display: block; 
         }
         #menu{
             left: 0%;
@@ -179,12 +191,6 @@
             margin-left: 0;
             color: white;
             text-align: left;
-        }
-        #menu a{
-            font-size: 1rem;
-            display: flexbox;
-            margin: 0 auto;
-            overflow: hidden;
         }
         .bottom {
             position: fixed;

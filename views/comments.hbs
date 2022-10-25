@@ -9,10 +9,10 @@
 <body>
     <nav>
     <ul id="menu">
+        <lu class="logo"><a href="/home">Home</a></lu>
+        <lu class="item"><a href="/home/new_post">Newpost</a></lu>
+        <lu class="item"><a href="/profile">Profile</a></lu>
     <h1>comments form</h1>
-        <li class="logo"><a href="/home">Home</a></li>
-        <li class="item"><a href="/home/new_post">Newpost</a></li>
-        <li class="item"><a href="/profile">Profile</a></li>
     </ul>
     </nav>
     <div class="bg">
@@ -31,7 +31,7 @@
         </div>
     </div>
     <script>
-        url = 'https://uttarayan-app.herokuapp.com/home/info'
+        url = '/home/info'
 
         async function fetch_data(url){
             
@@ -39,12 +39,52 @@
             const res = await fetch(url,{
                 method: 'GET'
             })
-            var {totaldata,comments} = await res.json();
+            var {posts,comments} = await res.json();
             let curUrl = window.location.href
             var user_id2 = curUrl.slice(curUrl.length -1,curUrl.length)
+
+            posts.forEach(element => {
+                if (user_id2 == element.id)
+                {    const post = document.createElement("div");
+                    post.classList.add('post');
+                    eleRoot.appendChild(post);
+
+                    const eleH3 = document.createElement("h3");
+                    post.appendChild(eleH3);
+                    eleH3.textContent = `${element.user_name}`
+
+                    const elep = document.createElement("h1");
+                    post.appendChild(elep);
+                    elep.textContent = `${element.message}`
+
+                    const eleH6 = document.createElement("h6");
+                    eleH6.textContent = `${element.createdAt}`
+                    if (element.url != null){
+                        const eleImg = document.createElement("img");
+                        post.appendChild(eleImg);
+                        eleImg.src = `${element.url}`
+                    }
+
+                    var link = document.createElement('a');
+                    link.setAttribute('href', `/feedback/:${element.id}/:likes`);
+                    link.textContent = `like ${element.likes}`;
+                    post.appendChild(link);
+
+                    
+                    var link = document.createElement('a');
+                    link.setAttribute('href', `/feedback/:${element.id}/:dislike`);
+                    link.textContent = `dislike ${element.dislikes}`;
+                    post.appendChild(link);
+                    
+                    var link = document.createElement('a');
+                    link.setAttribute('href', `/comments/:${element.id}`);
+                    link.textContent = 'comments';
+                    post.appendChild(link);
+                    post.appendChild(eleH6);
+                }
+            });
             comments = comments.reverse()
             comments.forEach(element => {
-                console.log(element,element.id)
                 if (user_id2 == element.postId){
                     const comit = document.createElement("div");
                     comit.classList.add('comit');
@@ -64,8 +104,8 @@
 
                     var link = document.createElement('a');
                     link.setAttribute('href', `/delete/:${element.id}/del`);
-                    link.textContent = `delete`;
-                    comit.appendChild(link);
+                    link.textContent = `❌`;
+                    elep.appendChild(link);
                     }
                 })}   
             fetch_data(url)
@@ -77,24 +117,24 @@
     </script>
     <style>
         #myDIV {
-            background: rgba(241, 196, 196, 0.422);
-            margin-top: -25vh;
-            height: 400px;
-            width: 210%;
+            margin-top: 20vh;
+            height: 800px;
+            width: 100%;
             overflow: auto;
             border-radius: 20px;
             }
 
         #total {
             height: 400px;
-            width: 90%;
+            width: 80%;
             padding: 10px;
         }
         .box2{
-            width: 60%;
+            width: 70%;
             display: flex;
             margin: 0 auto;
-            margin-top: -25vh;
+            margin-top: 20vh;
+            position: relative;
         }
         *{
             align-items: center;
@@ -121,8 +161,9 @@
         }
         h4{
             background: rgba(156, 155, 155, 0.206);
-            padding: 2px;
-            font-size: 10px;
+            padding: 5px;
+            border-radius: 20px;
+            font-size: 20px;
         }
         h5{
             text-align: right;
@@ -133,7 +174,8 @@
         .comit{
             z-index: 100;
             position: inherit;
-            width: 85%;
+            width: 95%;
+            height: 10vh;
             margin: 6.5px auto;
             background: #fff;
             border-radius: 10px;
@@ -142,7 +184,7 @@
         textarea {
             width: 100%;
             border: none;
-            background: #E8E8E8;
+            background: #f1e8e8;
             padding: 5px 10px;
             height: 50%;
             border-radius: 5px 5px 0px 0px;
@@ -180,6 +222,57 @@
             transition: 1s all;
             font-size: 16px;
             border-radius: 5px;
+        }
+        .post{
+            box-shadow: 0px 4px 24px 3px rgba(0, 0, 0, 0.476);
+            position: relative;
+            margin-top: 0rem !important;
+            padding: 10px;
+            border-radius: 30px;
+            width: 110%;
+            height: auto;
+            margin: 10px;
+            display: flexbox;
+        }
+        .post h3{
+            height: auto;
+            width: auto;
+            padding:  8px 15px 15px 15px;
+            background-color: azure;
+            border-radius: 20px;
+        }
+        .post a{
+            text-decoration: none;
+            height: 5%;
+            padding: 5px;
+            border-radius: 10px;
+            font-size: 15px;
+            background-color: #016ba8;
+            color: #fff;
+            border: 1px solid;
+            margin-right: 4px;
+        }
+        #menu a{
+            font-size: 1rem;
+            display: flexbox;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        img{
+            display: flex;
+            margin: 0 auto;
+            width: 32vh;
+            height: auto;
+            object-fit: scale-down;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            display: block; 
+        }
+        h4 a{
+            margin-top:-10vh;
+            margin-left: 14.5rem;
+            background: none;
+            border-radius: 50%;
         }
         
     </style>

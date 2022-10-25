@@ -13,7 +13,8 @@ routers.route('')
         req.body['password'] = await creating_token(req.body.password)
         await register.create(req.body).then((bool) => {
             if (bool) {
-                res.redirect('/login')
+                res.send("notification!! your account has be created!!  <a href='/login'>login</a> <style> *{margin:10%; font-size:100px;}")
+
             } else {
                 res.send('no not yet!!')
             }

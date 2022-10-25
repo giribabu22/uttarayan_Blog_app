@@ -13,9 +13,9 @@
                 <input type="text" placeholder="Search" required>
                 <button type="submit">🔍</button>
             </form>
-        <li class="logo"><a href="/home">Home</a></li>
-        <li class="item"><a href="/home/new_post">Newpost</a></li>
-        <li class="item"><a href="/logout">logout</a></li>
+        <lu class="logo"><a href="/home">Home</a></lu>
+        <lu class="item"><a href="/home/new_post">Newpost</a></lu>
+        <lu class="item"><a href="/logout">logout</a></lu>
     </ul>
 </nav>
     <table id = 'menu'>
@@ -25,7 +25,7 @@
     </div>
     <div class="bottom"> <hr> </div>
     <script >
-        url = 'https://uttarayan-app.herokuapp.com/profile/info'
+        url = '/profile/info'
         
         async function fetch_data(url){
             const eleRoot = document.getElementById('root');
@@ -44,9 +44,15 @@
                 post.appendChild(eleH3);
                 eleH3.textContent = `${element.user_name}`
 
-                const elep = document.createElement("h1");
-                post.appendChild(elep);
-                elep.textContent = `${element.message}`
+                    const elep = document.createElement("h4");
+                    post.appendChild(elep);
+                    elep.textContent = `${element.title}`
+                    console.log('it is running')
+                 if (element.message.length > 1){
+                    const elep = document.createElement("h1");
+                    post.appendChild(elep);
+                    elep.textContent = `${element.message}`
+                }
 
                 const eleH6 = document.createElement("h6");
                 eleH6.textContent = `${element.createdAt}`
@@ -147,8 +153,8 @@
         img{
             display: flex;
             margin: 0 auto;
-            width: 100%;
-            height: auto;
+            width: auto;
+            height: 55vh;
             overflow: hidden;
             border-radius: 20px;
             margin-bottom: 1.5rem;
