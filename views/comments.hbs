@@ -44,14 +44,15 @@
             var user_id2 = curUrl.slice(curUrl.length -1,curUrl.length)
             comments = comments.reverse()
             comments.forEach(element => {
-                if (user_id2 == element.id){
+                console.log(element,element.id)
+                if (user_id2 == element.postId){
                     const comit = document.createElement("div");
                     comit.classList.add('comit');
                     eleRoot.appendChild(comit);
                    
                     var eleH3 = document.createElement("h3");
                     comit.appendChild(eleH3);
-                    eleH3.textContent = `${element.postId}`
+                    eleH3.textContent = `${element.commiter_name}`
 
                     var eleH3 = document.createElement("h5");
                     comit.appendChild(eleH3);
@@ -63,7 +64,7 @@
 
                     var link = document.createElement('a');
                     link.setAttribute('href', `/delete/:${element.id}/del`);
-                    link.textContent = `del`;
+                    link.textContent = `delete`;
                     comit.appendChild(link);
                     }
                 })}   
@@ -76,26 +77,29 @@
     </script>
     <style>
         #myDIV {
-            margin-top: 1vh;
+            background: rgba(241, 196, 196, 0.422);
+            margin-top: -25vh;
             height: 400px;
-            width: 500px;
+            width: 210%;
             overflow: auto;
+            border-radius: 20px;
             }
 
         #total {
             height: 400px;
-            width: 80%;
+            width: 90%;
             padding: 10px;
         }
         .box2{
-            margin: 0 20%;
-            width: 400px;
+            width: 60%;
+            display: flex;
+            margin: 0 auto;
+            margin-top: -25vh;
         }
         *{
             align-items: center;
             width: auto;
             margin: 20px 0;
-            font-size: 20px;
         }
         body{
             background-color: rgba(156, 155, 155, 0.206);
@@ -118,26 +122,22 @@
         h4{
             background: rgba(156, 155, 155, 0.206);
             padding: 2px;
-            font-size: 40px;
+            font-size: 10px;
         }
         h5{
             text-align: right;
             margin-top: -2.5rem;
-        }
-        textarea{
-            border-radius: 10px;
-            padding: 5px;
-            background-color: azure;
+            font-size: 10px;
         }
 
         .comit{
             z-index: 100;
-            position:inherit;
-            max-width: 640px;
-            margin: 20px auto;
+            position: inherit;
+            width: 85%;
+            margin: 6.5px auto;
             background: #fff;
             border-radius: 10px;
-            padding: 20px;
+            padding: 7.4px 16.8px;
         }
         textarea {
             width: 100%;
@@ -178,10 +178,9 @@
             letter-spacing: 4px;
             box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.25);
             transition: 1s all;
-            font-size: 26px;
+            font-size: 16px;
             border-radius: 5px;
         }
-        
         
     </style>
 </body>

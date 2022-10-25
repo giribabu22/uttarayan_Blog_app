@@ -14,7 +14,7 @@
             </form>
             <li class="item"><a href="/home/new_post">Newpost</a></li>
             <li class="item"><a href="/profile">Profile</a></li>
-            <li class="logo"><a  href="/login">about</a></li>
+            <li class="logo"><a  href="/about">about</a></li>
     </ul>
 </nav>
 <table id = 'menu'>
@@ -30,7 +30,7 @@
         function myFunction() {
             var popup = document.getElementById("myPopup");
             popup.classList.toggle("show");
-         }
+         }  
         url = 'https://uttarayan-app.herokuapp.com/home/info' 
         async function fetch_data(url){
             const eleRoot = document.getElementById('root');
@@ -42,6 +42,7 @@
             let data = posts.reverse()
             
             data.forEach(element => {
+                console.log(data);
                 const post = document.createElement("div");
                 post.classList.add('post');
                 eleRoot.appendChild(post);
@@ -50,9 +51,17 @@
                 post.appendChild(eleH3);
                 eleH3.textContent = `${element.user_name}`;
 
-                const elep = document.createElement("h1");
-                post.appendChild(elep);
-                elep.textContent = `${element.message}`
+                if (element.message.length > 1){
+                    const elep = document.createElement("h4");
+                    post.appendChild(elep);
+                    elep.textContent = `${element.title}`
+                }
+
+                if (element.message.length > 1){
+                    const elep = document.createElement("h1");
+                    post.appendChild(elep);
+                    elep.textContent = `${element.message}`
+                }
 
                 const eleH6 = document.createElement("h6");
                 eleH6.textContent = `${element.createdAt}`;
@@ -65,18 +74,18 @@
                 }
                 var link = document.createElement('a');
                 link.setAttribute('href', `/feedback/:${element.id}/:likes`);
-                link.textContent = `like ${element.likes}`;
+                link.textContent = `Like ${element.likes}`;
                 post.appendChild(link);
 
                 
                 var link = document.createElement('a');
                 link.setAttribute('href', `/feedback/:${element.id}/:dislike`);
-                link.textContent = `dislike ${element.dislikes}`;
+                link.textContent = `Dislike ${element.dislikes}`;
                 post.appendChild(link);
 
                 var link = document.createElement('a');
                 link.setAttribute('href', `/comments/:${element.id}`);
-                link.textContent = 'comments';
+                link.textContent = `Comments`;
                 post.appendChild(link);
                 post.appendChild(eleH6);
             });
