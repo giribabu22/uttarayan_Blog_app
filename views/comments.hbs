@@ -41,8 +41,8 @@
             })
             var {posts,comments} = await res.json();
             let curUrl = window.location.href
-            var user_id2 = curUrl.slice(curUrl.length -1,curUrl.length)
-
+            var user_id2 = curUrl.split(':')
+            user_id2 = user_id2[user_id2.length -1];
             posts.forEach(element => {
                 if (user_id2 == element.id)
                 {    const post = document.createElement("div");

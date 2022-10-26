@@ -35,7 +35,7 @@ routers.route('').get((req, res) => {
                 res.send("notification:: Check the mail box, We sent an mail! <a href='/login'>login</a> <style> *{margin:10%; font-size:80px;}"); }
         })
     }else{
-        res.send("notification: this mail Id has no any account!! <a href='/login'>login</a> <a href='/forget'>forget</a> <style> *{margin:10%; font-size:80px;}")
+        res.send("notification: you don't have account with this Email !! <a href='/login'>login</a> <a href='/forget'>forget</a> <style> *{margin:10%; font-size:80px;}")
 
     }
 })

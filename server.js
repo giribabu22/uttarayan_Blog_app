@@ -21,7 +21,7 @@ app.use('/delete', verification, require('./routes/delete'))
 app.use('/forget', require('./routes/forget'))
 
 app.get('/logout',(req,res)=>{
-    res.cookie.user = undefined
+    res.cookie("user", undefined)
     res.redirect('/login')
 })
 app.get('/about',(req,res)=>{
