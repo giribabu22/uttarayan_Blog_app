@@ -14,7 +14,7 @@ routers.route('/:id/del').get(async (req,res)=>{
     if (bool){
         res.redirect('back');
     }else{
-        res.send("notification! login first <a href='/login'>login</a> <style> *{margin:10%; font-size:80px;}")
+        res.redirect('back')
     }
 })
 
