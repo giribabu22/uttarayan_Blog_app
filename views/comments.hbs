@@ -80,11 +80,6 @@
                     link.textContent = `dislike ${element.dislikes}`;
                     post.appendChild(link);
                     
-                    var link = document.createElement('a');
-                    link.setAttribute('href', `/comments/:${element.id}`);
-                    link.textContent = 'comments';
-                    post.appendChild(link);
-                    post.appendChild(eleH6);
                 }
             });
             comments.forEach(element => {
@@ -105,6 +100,10 @@
                     link.setAttribute('href', `/delete/:${element.id}/del`);
                     link.textContent = `❌`;
                     eleH3.appendChild(link);
+
+                    const elep = document.createElement("h4");
+                    comit.appendChild(elep);
+                    elep.textContent = `${element.commit}`
 
                     }
                 })}   
