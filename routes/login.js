@@ -24,7 +24,7 @@ routers
             res.cookie('user', toke)
             res.redirect('/home')
         } else {
-            res.send("notification !! invalid-input!! <a href='/login'>login</a> <style> *{margin:10%; font-size:80px;}")
+            res.send("notification !! invalid-input!! <a href='/login'>Login</a> <a href='/forget'>Forget_Password</a> <style> *{margin:10%; font-size:80px;}")
         }
     })
 

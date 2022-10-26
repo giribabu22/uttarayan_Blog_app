@@ -10,8 +10,12 @@ routers.route('/:id').get(async (req, res) => {
 })
 
 routers.route('/:id/del').get(async (req,res)=>{
-    await comments.destroy({ where: { registerId: req.user.id, id :req.params.id.slice(1)} });
-    res.redirect('back');
+    let bool = await comments.destroy({ where: { registerId: req.user.id, id :req.params.id.slice(1)} });
+    if (bool){
+        res.redirect('back');
+    }else{
+        res.send("notification! login first <a href='/login'>login</a> <style> *{margin:10%; font-size:80px;}")
+    }
 })
 
 module.exports = routers;

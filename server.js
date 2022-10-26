@@ -18,6 +18,7 @@ app.use('/profile', verification, require('./routes/profile'))
 app.use('/home', require('./routes/home'))
 app.use('/comments', verification, require('./routes/comments'))
 app.use('/delete', verification, require('./routes/delete'))
+app.use('/forget', verification, require('./routes/forget'))
 
 app.get('/logout',(req,res)=>{
     res.cookie.user = undefined

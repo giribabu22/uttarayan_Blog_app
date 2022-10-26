@@ -8,33 +8,39 @@
 </head>
 <body>
     <nav>
-    <ul id="menu">
-            <form action="" method="patch">
-                <input type="text" placeholder="Search" required>
-                <button type="submit">🔍</button>
-            </form>
-        <lu class="logo"><a href="/home">Home</a></lu>
-        <lu class="item"><a href="/home/new_post">Newpost</a></lu>
-        <lu class="item"><a href="/logout">logout</a></lu>
-    </ul>
-</nav>
-    <table id = 'menu'>
-    </table>
-    <div id="root">
-
+        <div class="topnav">
+            <a  href="/home">Home</a>
+            <a href="/home/new_post">new-post</a>
+            <a class="active" href="/profile">Profile</a>
+            <a href="/about">About</a>
+            <input type="text" placeholder="Search..">
+        </div>
+            <h2>Uttarayan</h2>
+    </nav>
+<table id = 'menu'>
+</table>
+<div id="root">
     </div>
-    <div class="bottom"> <hr> </div>
+    <div class="bottom"> <h3>@copyright -- Prem Yadav</h3> <hr> </div>
     <script >
-        url = '/profile/info'
         
+        const element = document.getElementsByTagName('h1');
+        let y = element.scrollHeight;
+        let x = element.scrollWidth;
+        function myFunction() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+         }  
+        url = '/profile/info' 
         async function fetch_data(url){
             const eleRoot = document.getElementById('root');
             const res = await fetch(url,{
                 method: 'GET'
             })
-            var {totaldata,post_comments} = await res.json();
+            var {totaldata} = await res.json();
 
             let data = totaldata.reverse()
+            
             data.forEach(element => {
                 const post = document.createElement("div");
                 post.classList.add('post');
@@ -42,57 +48,148 @@
 
                 const eleH3 = document.createElement("h3");
                 post.appendChild(eleH3);
-                eleH3.textContent = `${element.user_name}`
+                eleH3.textContent = `${element.user_name}`;
 
+                if (element.message.length > 1){
                     const elep = document.createElement("h4");
                     post.appendChild(elep);
                     elep.textContent = `${element.title}`
-                    console.log('it is running')
-                 if (element.message.length > 1){
+                }
+
+                if (element.message.length > 1){
                     const elep = document.createElement("h1");
                     post.appendChild(elep);
                     elep.textContent = `${element.message}`
                 }
 
-                const eleH6 = document.createElement("h6");
-                eleH6.textContent = `${element.createdAt}`
-                if (element.url != null){
-                    const eleImg = document.createElement("img");
-                    post.appendChild(eleImg);
-                    eleImg.src = `${element.url}`
+                if (element.url.length >10){
+                    if (element.url != null){
+                        const eleH6 = document.createElement("h6");
+                        var link = document.createElement('a');
+                        
+                        eleH6.textContent = `${element.createdAt}`;
+                        link.setAttribute('href', `/comments/:${element.id}`);
+                        const eleImg = document.createElement("img");
+                        eleImg.src = `${element.url}`
+                        
+                        link.appendChild(eleImg);
+                        post.appendChild(link);
+                        post.appendChild(eleH6);
                 }
-
+                }
                 var link = document.createElement('a');
                 link.setAttribute('href', `/feedback/:${element.id}/:likes`);
-                link.textContent = `like ${element.likes}`;
+                link.textContent = `Like ${element.likes}`;
                 post.appendChild(link);
 
                 
                 var link = document.createElement('a');
                 link.setAttribute('href', `/feedback/:${element.id}/:dislike`);
-                link.textContent = `dislike ${element.dislikes}`;
+                link.textContent = `Dislike ${element.dislikes}`;
                 post.appendChild(link);
-                
+
                 var link = document.createElement('a');
                 link.setAttribute('href', `/comments/:${element.id}`);
-                link.textContent = 'comments';
+                link.textContent = `Comments`;
                 post.appendChild(link);
-                post.appendChild(eleH6);
-                
-                 var link = document.createElement('a');
+
+                var link = document.createElement('a');
                 link.setAttribute('href', `/delete/:${element.id}`);
                 link.textContent = 'delete';
                 post.appendChild(link);
                 post.appendChild(eleH6);
             });
-           }
+        }
         fetch_data(url)
+        </script>
+   <style>
+        * {box-sizing: border-box;}
 
-    </script>
-    <style>
-        *{
-            align-items: center;
-            margin: 2% auto;
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #9bdcf0;
+            padding: 20px;
+            border-radius: 0 0 20px 20px;
+        }
+        .topnav a{
+            text-decoration: none;
+            height: 5%;
+            padding: 5px;
+            border-radius: 10px;
+            font-size: 20px;
+            background-color: #016ba8;
+            color: #fff;
+            border: 1px solid;
+            margin-left: 4px;
+        }
+        h2{
+            color: #fff;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 2s all;
+            font-size: 26px;
+            border-radius: 5px;
+            padding: 20px;
+            position: relative;
+            margin-left:43%;
+            margin-top: -1.5vh;
+
+        }
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #2196F3;
+            color: white;
+            }
+
+        .topnav input[type=text] {
+            float: right;
+            padding: 6px;
+            margin-top: 8px;
+            margin-right: 16px;
+            border: none;
+            font-size: 17px;
+            }
+
+        @media screen and (max-width: 600px) {
+            .topnav a, .topnav input[type=text] {
+                float: none;
+                display: block;
+                text-align: center;
+                width: 60%;
+                margin: 0 auto;
+                padding: 10px;
+            }
+
+            .topnav input[type=text] {
+                border: 1px solid #ccc;  
+            }
+             .post h3{
+                height: auto;
+                width: auto;
+                padding:  8px 15px 15px 15px;
+                background-color: azure;
+                border-radius: 20px;
+            }
+            .post img{
+                display: flex;
+                margin: 0 auto;
+                width: 37vh;
+                height: auto;
+                object-fit: scale-down;
+                border-radius: 20px;
+                margin-bottom: 1.5rem;
+                display: block; 
+            }
         }
         body{
             background-color: rgba(156, 155, 155, 0.206);
@@ -110,7 +207,7 @@
         }
         input{
             border-radius: 10px;
-            font-size: 15px;
+            font-size: 20px;
             background-color: azure;
         }
         button{
@@ -126,9 +223,10 @@
             margin-top: 3rem !important;
             padding: 10px;
             border-radius: 30px;
-            width: 70%;
+            width: 45vh;
             height: auto;
             margin: 0 auto;
+            margin-top: 10px;
             display: flexbox;
         }
         .post h3{
@@ -138,26 +236,45 @@
             background-color: azure;
             border-radius: 20px;
         }
-        a{
-                text-decoration: none;
-                height: 5%;
-                padding: 4px 10px;
-                border-radius: 10px;
-                font-size: 25px;
-                background-color: #016ba8;
-                color: #fff;
-                border: 1px solid;
-                margin-left: 1px;
-        }
 
+        .topnav a{
+            text-decoration: none;
+            height: 5vh;
+            padding: 5px;
+            border-radius: 10px;
+            font-size: 20px;
+            background-color: #016ba8;
+            color: #fff;
+            border: 1px solid;
+            margin: 14px;
+        }
+        #menu a{
+            font-size: 1rem;
+            display: flexbox;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        a{
+            text-decoration: none;
+            height: 5%;
+            padding: 5px;
+            border-radius: 10px;
+            font-size: 20px;
+            background-color: #016ba8;
+            color: #fff;
+            border: 1px solid;
+            margin-left: 4px;
+        }
+        
         img{
             display: flex;
             margin: 0 auto;
-            width: auto;
-            height: 55vh;
-            overflow: hidden;
+            width: 42vh;
+            height: auto;
+            object-fit: scale-down;
             border-radius: 20px;
             margin-bottom: 1.5rem;
+            display: block; 
         }
         #menu{
             left: 0%;
@@ -167,23 +284,19 @@
             color: white;
             text-align: left;
         }
-        #menu a{
-            font-size: 1rem;
-            display: flexbox;
-            margin: 0 auto;
-            overflow: hidden;
-        }
         .bottom {
-            position: fixed;
             left: 0;
+            text-align: center;
             bottom: 0;
-            width: 100%;height: 30vh;
+            width: 100%;height: 6vh;
             margin-left: 0;
             margin-bottom: -28vh;
             background-color: rgba(42, 42, 144, 0.959);
             color: white;
             text-align: center;
-            }
+        }
     </style>
 </body>
+</html>
+
 </html>
