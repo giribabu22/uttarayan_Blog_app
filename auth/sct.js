@@ -5,7 +5,6 @@ async function creating_token(data) {
 }
 
 async function verification(req, res, next) {
-    console.log(req.headers.cookie && req.headers.cookie.split('=')[1] != "undefined");
     if (req.headers.cookie && req.headers.cookie.split('=')[1] != "undefined") {
         let token = req.headers.cookie.split('=')[1]
         let user = jwt.verify(token, 'sdsgdsgsdgdgsakds')
