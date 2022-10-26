@@ -5,11 +5,4 @@ module.exports = new Sequelize('uttarayan_app', "uttarayan_app", 'uttarayan_app'
         port: 3306,
         dialect: 'mysql',
         logging: false
-})
-
-
-// module.exports = new Sequelize('uttarayan', "root", 'prem@630', {
-//         host: "localhost",
-//         dialect: 'mysql',
-//         logging: false
-// })
+})      

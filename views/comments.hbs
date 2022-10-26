@@ -12,7 +12,7 @@
         <lu class="logo"><a href="/home">Home</a></lu>
         <lu class="item"><a href="/home/new_post">Newpost</a></lu>
         <lu class="item"><a href="/profile">Profile</a></lu>
-    <h1>comments form</h1>
+    <h1>comments</h1>
     </ul>
     </nav>
     <div class="bg">
@@ -31,7 +31,7 @@
         </div>
     </div>
     <script>
-        url = '/home/info'
+        url = '/home/info/data'
 
         async function fetch_data(url){
             
@@ -83,7 +83,6 @@
                     post.appendChild(eleH6);
                 }
             });
-            comments = comments.reverse()
             comments.forEach(element => {
                 if (user_id2 == element.postId){
                     const comit = document.createElement("div");
@@ -97,15 +96,16 @@
                     var eleH3 = document.createElement("h5");
                     comit.appendChild(eleH3);
                     eleH3.textContent = `${element.createdAt}`
+                    
+                    var link = document.createElement('a');
+                    link.setAttribute('href', `/delete/:${element.id}/del`);
+                    link.textContent = `❌`;
+                    eleH3.appendChild(link);
 
                     const elep = document.createElement("h4");
                     comit.appendChild(elep);
                     elep.textContent = `${element.commit}`
 
-                    var link = document.createElement('a');
-                    link.setAttribute('href', `/delete/:${element.id}/del`);
-                    link.textContent = `❌`;
-                    elep.appendChild(link);
                     }
                 })}   
             fetch_data(url)
@@ -175,7 +175,7 @@
             z-index: 100;
             position: inherit;
             width: 95%;
-            height: 10vh;
+            height: auto;
             margin: 6.5px auto;
             background: #fff;
             border-radius: 10px;
@@ -186,7 +186,7 @@
             border: none;
             background: #f1e8e8;
             padding: 5px 10px;
-            height: 50%;
+            height: auto;
             border-radius: 5px 5px 0px 0px;
             border-bottom: 2px solid #016BA8;
             transition: all 0.5s;
@@ -224,6 +224,7 @@
             border-radius: 5px;
         }
         .post{
+            transition: all 1s;
             box-shadow: 0px 4px 24px 3px rgba(0, 0, 0, 0.476);
             position: relative;
             margin-top: 0rem !important;
@@ -268,9 +269,9 @@
             margin-bottom: 1.5rem;
             display: block; 
         }
-        h4 a{
-            margin-top:-10vh;
-            margin-left: 14.5rem;
+        h5 a{
+            position: relative;
+            font-size: 9px;
             background: none;
             border-radius: 50%;
         }

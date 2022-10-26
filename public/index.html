@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Home</title>
 </head>
 <body>
     <nav>
@@ -15,7 +16,8 @@
             <a href="/about">About</a>
             <input type="text" placeholder="Search.."></div>
     </nav>
-    <h2>Uttarayan</h2>
+    <h2>Uttarayan <i class="fa-li fa fa-spinner fa-spin"></i> </h2>
+
 <table id = 'menu'>
 </table>
 <div id="root">
@@ -30,7 +32,7 @@
             var popup = document.getElementById("myPopup");
             popup.classList.toggle("show");
          }  
-        url = '/home/info' 
+        url = '/home/info/data' 
         async function fetch_data(url){
             const eleRoot = document.getElementById('root');
             const res = await fetch(url,{
@@ -119,7 +121,10 @@
             background-color: #2196F3;
             color: white;
             }
-
+        h2 i {
+            margin: 10px 0 0 20px;
+            font-size: 20px;
+        }
         .topnav input[type=text] {
             float: right;
             padding: 6px;

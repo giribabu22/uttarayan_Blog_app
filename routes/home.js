@@ -8,7 +8,7 @@ routers.use(express.static('public'));
 routers.use(express.urlencoded())
 
 
-routers.route('/info').get(async (req, res) => {
+routers.route('/info/data').get(async (req, res) => {
     try {
         let total_data = await register.findAll()
         let posts_data = await posts.findAll()

@@ -9,6 +9,7 @@ routers.use(express.urlencoded())
 routers.route('/:postId').get(async (req,res)=>{
     res.render('comments')
 }).post(async(req,res)=>{
+
     let trans = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
@@ -19,6 +20,7 @@ routers.route('/:postId').get(async (req,res)=>{
         }
     })
     let zez = await posts.findOne({ where: { id: req.params.postId.slice(1) }})
+    
     let mailOptions = {
         from: process.env.EMAIL,
         to: req.user.email,
