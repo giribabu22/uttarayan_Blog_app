@@ -31,10 +31,10 @@ routers.route('/:postId').get(async (req,res)=>{
                     We’re here for you every step of the way!\n\t https://uttarayan-app.herokuapp.com/login`
         }
 
-    trans.sendMail(mailOptions, function (err, data) {
+    trans.sendMail(mailOptions,async function (err, data) {
         if (err) throw err
         else {
-            comments.create({ registerId: req.user.id, postId: req.params.postId.slice(1), commit: req.body.commit, commiter_name :req.user.name}).then((result) => {
+            await comments.create({ registerId: req.user.id, postId: req.params.postId.slice(1), commit: req.body.commit, commiter_name :req.user.name}).then((result) => {
                 res.redirect(req.get('referer'));                
             }).catch((err) => {
                 

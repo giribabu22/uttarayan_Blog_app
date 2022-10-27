@@ -29,11 +29,12 @@ routers.route('').get((req, res) => {
             text: `Hello ${yourData['dataValues'].name} \n Forgot your password? No worries! Click the link given below to password. this is your old data \n\tPassword: "${p}" \n\tEmail: "${yourData['dataValues'].email}". \n https://uttarayan-app.herokuapp.com/login`
         }
 
-        trans.sendMail(mailOptions, function (err, data) {
+         (async ()=> {trans.sendMail(mailOptions, function (err, data) {
+            console.log('running!!');
             if (err) throw err
             else {
                 res.send("notification:: Check the mail box, We sent an mail! <a href='/login'>login</a> <style> *{margin:10%; font-size:80px;}"); }
-        })
+        })})()
     }else{
         res.send("notification: you don't have account with this Email !! <a href='/login'>login</a> <a href='/forget'>forget</a> <style> *{margin:10%; font-size:80px;}")
 
