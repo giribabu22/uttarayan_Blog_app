@@ -33,17 +33,17 @@ routers.route('')
         }
 
 
-        trans.sendMail(mailOptions, function (err, data) {
+        trans.sendMail(mailOptions, async function (err, data) {
             if (err) {
                 res.send("invalid Email Dude!! <a href='/sign-up'>sign_in</a> <style> *{margin:10%; font-size:100px;}")
             } else {
-                register.create(req.body).then((bool) => {
+                await register.create(req.body).then((bool) => {
                     if (bool) {
                         res.send("notification!! your account has be created!!  <a href='/login'>login</a> <style> *{margin:10%; font-size:100px;}")
                     } else {
                         res.send('no not yet!!')
                     }
-                }).catch(err)(err => { })
+                }).catch(errors => res.send(errors.message) )
             }
         })
     })

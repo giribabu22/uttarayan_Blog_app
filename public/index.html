@@ -33,6 +33,8 @@
             popup.classList.toggle("show");
          }  
         url = '/home/info/data' 
+
+        
         async function fetch_data(url){
             const eleRoot = document.getElementById('root');
             const res = await fetch(url,{
@@ -42,6 +44,8 @@
 
             let data = posts.reverse()
             
+
+
             data.forEach(element => {
                 const post = document.createElement("div");
                 post.classList.add('post');
