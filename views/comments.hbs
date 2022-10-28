@@ -12,6 +12,7 @@
     <ul id="menu">
         <lu class="logo"><a href="/home">Home</a></lu>
         <lu class="item"><a href="/profile">Profile</a></lu>
+        <lu class="item"><a href="/profile">Back</a></lu>
     <h1>comments</h1>
     </ul>
     </nav>
@@ -26,7 +27,7 @@
         <div class="box2">
         <form action="" method="post">
             <textarea  type="text" name="commit" required placeholder="massage" rows="4" cols="36"></textarea>
-            <button type="submit">submit</button>  <a href="/home">Back</a>
+            <button type="submit">submit</button>
         </form>
         </div>
     </div>
@@ -118,6 +119,7 @@
             width: 100%;
             overflow: auto;
             border-radius: 20px;
+            margin: 0 auto;
             }
 
         #total {
@@ -129,7 +131,6 @@
             width: 70%;
             display: flex;
             margin: 0 auto;
-            margin-top: 20vh;
             position: relative;
         }
         *{
@@ -142,7 +143,6 @@
         }
         .bg{
             height: 70vh;
-            width: 47vh;
             border-radius: 50%;
             display: flex;
             margin: 0 auto;
@@ -221,7 +221,6 @@
             border-radius: 5px;
         }
         .post{
-            transition: all 1s;
             box-shadow: 0px 4px 24px 3px rgba(0, 0, 0, 0.476);
             position: relative;
             margin-bottom: 1rem !important;
@@ -229,8 +228,8 @@
             border-radius: 30px;
             width: 110%;
             height: auto;
-            margin: 10px;
-            display: flexbox;
+            margin: 0 auto;
+            transition: 1s all;
         }
         .post h3{
             height: auto;
