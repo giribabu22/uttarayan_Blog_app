@@ -61,8 +61,6 @@
                     post.appendChild(elep);
                     elep.textContent = `${element.message}`
 
-                    const eleH6 = document.createElement("h6");
-                    eleH6.textContent = `${element.createdAt}`
                     if (element.url != null){
                         const eleImg = document.createElement("img");
                         post.appendChild(eleImg);
@@ -94,7 +92,7 @@
 
                     var eleH3 = document.createElement("h5");
                     comit.appendChild(eleH3);
-                    eleH3.textContent = `${element.createdAt}`
+                    eleH3.textContent = `${element.createdAt.slice(0,12)}`
                     
                     var link = document.createElement('a');
                     link.setAttribute('href', `/delete/:${element.id}/del`);
@@ -116,8 +114,7 @@
     </script>
     <style>
         #myDIV {
-            margin-top: 20vh;
-            height: 800px;
+            height: 600px;
             width: 100%;
             overflow: auto;
             border-radius: 20px;
@@ -242,6 +239,18 @@
             background-color: azure;
             border-radius: 20px;
         }
+        h1 {
+            background-color: #016ba891;
+            color: #fff;
+            padding: 10px;
+            width: 90%;
+            height: auto;
+            font-weight: 300;
+            overflow: auto;
+            font-size: 22px;
+            border-radius: 20px;
+        }
+
         .post a{
             text-decoration: none;
             height: 5%;
