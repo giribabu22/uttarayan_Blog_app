@@ -15,14 +15,14 @@ routers.route('/:postId').get(async (req,res)=>{
         port: 465,
         secure: true,
         auth: {
-            user: process.env.EMAIL,
-            pass: process.env.PASSWORD
+            user:'Giribabu22@navgurukul.org',
+            pass: 'prem@630'
         }
     })
     let zez = await posts.findOne({ where: { id: req.params.postId.slice(1) }})
     
     let mailOptions = {
-        from: process.env.EMAIL,
+        from: 'giribabu22@navgurukul.org',
         to: req.user.email,
         subject: 'New Comment uttarayan-app community',
         text: `Hello  \  You got one new Comment, give replay to you friend! click the link https://uttarayan-app.herokuapp.com/comments${req.url}\n
@@ -31,11 +31,11 @@ routers.route('/:postId').get(async (req,res)=>{
                     We’re here for you every step of the way!\n\t https://uttarayan-app.herokuapp.com/login`
         }
 
+    res.redirect(req.get('referer'));                
     // trans.sendMail(mailOptions,async function (err, data) {
     //     if (err) throw err
     //     else {
     //         await comments.create({ registerId: req.user.id, postId: req.params.postId.slice(1), commit: req.body.commit, commiter_name :req.user.name}).then((result) => {
-    //             res.redirect(req.get('referer'));                
     //         }).catch((errors) => {
     //             res.send(`notification!$ login first <a href='/login'>login</a> <style> *{margin:10%; font-size:80px;}`)
     //         });
