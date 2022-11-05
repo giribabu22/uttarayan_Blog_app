@@ -23,18 +23,18 @@ routers.route('').get((req, res) => {
     if (yourData != null){
         let p = jwt.verify(yourData['dataValues'].password,'sdsgdsgsdgdgsakds')
         let mailOptions = {
-            from: 'Giribabu22@navgurukul.org',
+            from: process.env.EMAIL,
             to: req.body.user_email,
             subject: 'sending from nodemailer',
             text: `Hello ${yourData['dataValues'].name} \n Forgot your password? No worries! Click the link given below to password. this is your old data \n\tPassword: "${p}" \n\tEmail: "${yourData['dataValues'].email}". \n https://uttarayan-app.herokuapp.com/login`
         }
-
-         (async ()=> {trans.sendMail(mailOptions, function (err, data) {
-            console.log('running!!');
-            if (err) throw err
-            else {
-                res.send("notification:: Check the mail box, We sent an mail! <a href='/login'>login</a> <style> *{margin:10%; font-size:80px;}"); }
-        })})()
+        res.send(`your pin is "${p}" <br><br>notification:: Check the mail box, We sent an mail! <a href='/login'>login</a> <style> *{margin:10%; font-size:80px;}`);
+        //  (async ()=> {trans.sendMail(mailOptions, function (err, data) {
+        //     console.log('running!!');
+        //     if (err) throw err
+        //     else {
+        //      }
+        // })})()
     }else{
         res.send("notification: you don't have account with this Email !! <a href='/login'>login</a> <a href='/forget'>forget</a> <style> *{margin:10%; font-size:80px;}")
 
