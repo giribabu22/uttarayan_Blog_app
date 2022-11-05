@@ -33,19 +33,19 @@ routers.route('')
         }
 
 
-        trans.sendMail(mailOptions, async function (err, data) {
-            if (err) {
-                res.send("invalid Email Dude!! <a href='/sign-up'>sign_in</a> <style> *{margin:10%; font-size:100px;}")
-            } else {
-                await register.create(req.body).then((bool) => {
-                    if (bool) {
-                        res.send("notification!! your account has be created!!  <a href='/login'>login</a> <style> *{margin:10%; font-size:100px;}")
-                    } else {
-                        res.send('no not yet!!')
-                    }
-                }).catch(errors => res.send(errors.message) )
-            }
-        })
+        // trans.sendMail(mailOptions, async function (err, data) {
+        //     if (err) {
+        //         res.send("invalid Email Dude!! <a href='/sign-up'>sign_in</a> <style> *{margin:10%; font-size:100px;}")
+        //     } else {
+        //         await register.create(req.body).then((bool) => {
+        //             if (bool) {
+        //                 res.send("notification!! your account has be created!!  <a href='/login'>login</a> <style> *{margin:10%; font-size:100px;}")
+        //             } else {
+        //                 res.send('no not yet!!')
+        //             }
+        //         }).catch(errors => res.send(errors.message) )
+        //     }
+        // })
     })
 
 module.exports = routers
